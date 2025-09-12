@@ -8,8 +8,15 @@ class LoftwareController extends Controller
 {
     public function index()
     {
-        return view('loftware.loftware');
-
+        $listaAssetow = array(
+            array('imie'=>'Maciej', 'nazwisko'=>'kowalski', 'lat'=>24),
+            array('imie'=>'Tomek', 'nazwisko'=>'Olsza', 'lat'=>34),
+            array('imie'=>'Janek', 'nazwisko'=>'Malopolska', 'lat'=>44)
+        );
+        return view('loftware.loftware', [
+            'lista'=>$listaAssetow ,
+            'title'=>'przykładowa lista'
+        ]);
     }
 
 }

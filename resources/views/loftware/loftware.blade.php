@@ -1,21 +1,39 @@
 @extends('layouts/main')
 
+@section('title')
+    @if(isset($title))
+        - {{$title}}
+    @endif
+@endsection('title')
+
 @section('content')
 
-    <div style="height: 4000px; border:1px solid black" class="container">
-        <button type="button" class="btn btn-primary">Primary</button>
-        <button type="button" class="btn btn-secondary">Secondary</button>
-        <button type="button" class="btn btn-success">Success</button>
-        <button type="button" class="btn btn-danger">Danger</button>
-        <button type="button" class="btn btn-warning">Warning</button>
-        <button type="button" class="btn btn-info">Info</button>
-        <button type="button" class="btn btn-light">Light</button>
-        <button type="button" class="btn btn-dark">Dark</button>
+    <div class="container mt-4">
+        <h3 class="mb-3">Przykładowa Tabela</h3>
+        <table class="table table-striped table-bordered table-hover align-middle">
+            <thead class="table-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Imie</th>
+                <th scope="col">Nazwisko</th>
+                <th scope="col">Lata</th>
+            </tr>
+            </thead>
+            <tbody>
 
-        <button type="button" class="btn btn-link">Link</button>
+
+            @foreach($lista as $asset)
+
+                <tr>
+                    <th scope="row">{{$loop->iteration}}</th>
+                    <td>{{$asset['imie']}}</td>
+                    <td>{{$asset['nazwisko']}}</td>
+                    <td>{{$asset['lat']}}</td>
+                </tr>
+
+            @endforeach
+            </tbody>
+        </table>
     </div>
-
-
-
 
 @endsection
