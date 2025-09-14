@@ -2,19 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class LoftwareController extends Controller
 {
     public function index()
     {
-        $listaAssetow = array(
-            array('imie'=>'Maciej', 'nazwisko'=>'kowalski', 'lat'=>24),
-            array('imie'=>'Tomek', 'nazwisko'=>'Olsza', 'lat'=>34),
-            array('imie'=>'Janek', 'nazwisko'=>'Malopolska', 'lat'=>44)
-        );
+
+        //$users = User::all();
+        //$users = User::where('status', 'Active')->get();
+        //$users = User::orderBy('name', 'asc')->get();
+        $users = User::where('status', 'Active')->orderBy('name', 'asc')->get();
+
         return view('loftware.loftware', [
-            'lista'=>$listaAssetow ,
+            'lista'=>$users ,
             'title'=>'przykładowa lista'
         ]);
     }

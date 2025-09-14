@@ -15,22 +15,24 @@
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Imie</th>
-                <th scope="col">Nazwisko</th>
-                <th scope="col">Lata</th>
+                <th scope="col">Email</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Address</th>
+                <th scope="col">Status</th>
             </tr>
             </thead>
             <tbody>
 
-
             @foreach($lista as $asset)
-
                 <tr>
-                    <th scope="row">{{$loop->iteration}}</th>
-                    <td>{{$asset['imie']}}</td>
-                    <td>{{$asset['nazwisko']}}</td>
-                    <td>{{$asset['lat']}}</td>
+                   <!-- <th scope="row">{{$loop->iteration}}</th> -->
+                    <td>{{$asset->id }}</td>
+                    <td>{{$asset->name }}</td>
+                    <td>{{$asset->email }}</td>
+                    <td>{{$asset->phone }}</td>
+                    <td>{{$asset->address }}</td>
+                    <td>{{$asset->status }}</td>
                 </tr>
-
             @endforeach
             </tbody>
         </table>

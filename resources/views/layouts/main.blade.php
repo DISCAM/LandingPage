@@ -1,28 +1,59 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>
-    @yield('title')
-</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>
+        @yield('title')
+    </title>
     <link rel="stylesheet" href="{{ URL::asset('css/styles.css') }}">
     <link rel="icon" href="favicon.png">
-    <link rel="stylesheet" href="/css/bootstrap.css" />
+    <link rel="stylesheet" href="/css/bootstrap.css"/>
     <script src="/js/bootstrap.bundle.js"></script>
 
 </head>
 <body>
+<style>
+    .mega-offcanvas {
+        height: 70vh; /* wys. panelu */
+        background: #0b2c6b; /* granat zbliżony do screena */
+    }
+
+    .mega-list li + li {
+        margin-top: .5rem;
+    }
+
+    .mega-link {
+        color: #fff;
+        text-decoration: none;
+        font-weight: 600;
+    }
+
+    .mega-link:hover {
+        text-decoration: underline;
+    }
+
+    .mega-sub {
+        display: block;
+        font-weight: 400;
+        opacity: .8;
+        font-size: .9rem;
+    }
+
+    .navbar-custom {
+        background-color: #0e1d77; /* Twój kolor */
+    }
+</style>
 
 <!-- (opcjonalnie) Otwarcie panelu po najechaniu na desktopie -->
 <script>
     // Otwieraj po hover dla >=992px
-    document.querySelectorAll('[data-bs-target^="#mega"]').forEach(btn=>{
+    document.querySelectorAll('[data-bs-target^="#mega"]').forEach(btn => {
         const target = document.querySelector(btn.getAttribute('data-bs-target'));
         const off = target ? bootstrap.Offcanvas.getOrCreateInstance(target) : null;
 
-        if(!off) return;
+        if (!off) return;
 
         btn.addEventListener('mouseenter', () => {
             if (window.innerWidth >= 992) off.show();
@@ -46,7 +77,8 @@
 
                 <!-- TRIGGER: PRODUCTS -->
                 <li class="nav-item me-lg-2">
-                    <button class="btn btn-link nav-link px-2 text-white fw-bold" data-bs-toggle="offcanvas" data-bs-target="#megaProducts">
+                    <button class="btn btn-link nav-link px-2 text-white fw-bold" data-bs-toggle="offcanvas"
+                            data-bs-target="#megaProducts">
                         Products
                     </button>
                 </li>
@@ -71,7 +103,8 @@
 </nav>
 
 <!-- OFFCANVAS: PRODUCTS -->
-<div class="offcanvas offcanvas-top mega-offcanvas text-white" tabindex="-1" id="megaProducts" aria-labelledby="megaProductsLabel">
+<div class="offcanvas offcanvas-top mega-offcanvas text-white" tabindex="-1" id="megaProducts"
+     aria-labelledby="megaProductsLabel">
     <div class="offcanvas-header border-bottom border-light-subtle">
         <h5 class="offcanvas-title" id="megaProductsLabel">Products</h5>
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
@@ -84,10 +117,14 @@
                 <div class="col-12 col-md-6 col-lg-4">
                     <h6 class="text-uppercase opacity-75 mb-3">Labeling Products</h6>
                     <ul class="list-unstyled mega-list">
-                        <li><a href="#" class="mega-link">Loftware Cloud Enterprise</a><span class="mega-sub">For Global Enterprises</span></li>
-                        <li><a href="#" class="mega-link">Loftware Cloud</a><span class="mega-sub">For Medium & Growing Business</span></li>
-                        <li><a href="#" class="mega-link">Loftware Cloud Designer</a><span class="mega-sub">For Single Site, Smaller Business</span></li>
-                        <li class="mt-3"><a href="#" class="mega-link">Medical Device & Clinical Trials Labeling</a></li>
+                        <li><a href="#" class="mega-link">Loftware Cloud Enterprise</a><span class="mega-sub">For Global Enterprises</span>
+                        </li>
+                        <li><a href="#" class="mega-link">Loftware Cloud</a><span class="mega-sub">For Medium & Growing Business</span>
+                        </li>
+                        <li><a href="#" class="mega-link">Loftware Cloud Designer</a><span class="mega-sub">For Single Site, Smaller Business</span>
+                        </li>
+                        <li class="mt-3"><a href="#" class="mega-link">Medical Device & Clinical Trials Labeling</a>
+                        </li>
                     </ul>
                 </div>
 
@@ -124,7 +161,8 @@
 </div>
 
 <!-- OFFCANVAS: INDUSTRIES (drugi panel) -->
-<div class="offcanvas offcanvas-top mega-offcanvas text-white" tabindex="-1" id="megaIndustries" aria-labelledby="megaIndustriesLabel">
+<div class="offcanvas offcanvas-top mega-offcanvas text-white" tabindex="-1" id="megaIndustries"
+     aria-labelledby="megaIndustriesLabel">
     <div class="offcanvas-header border-bottom border-light-subtle">
         <h5 class="offcanvas-title" id="megaIndustriesLabel">Industries</h5>
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
@@ -162,8 +200,6 @@
         </div>
     </div>
 </div>
-
-
 
 
 @yield('content')

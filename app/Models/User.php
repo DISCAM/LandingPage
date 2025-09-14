@@ -17,10 +17,13 @@ class User extends Authenticatable
      *
      * @var list<string>
      */
-    protected $fillable = [
+    protected $fillable = [    //// tutaj podajemy nazwy kolumn które mogą być zmieniane przy masowej aktualizacji
         'name',
         'email',
         'password',
+        'phone',
+        'address',
+        'status'
     ];
 
     /**
@@ -28,7 +31,7 @@ class User extends Authenticatable
      *
      * @var list<string>
      */
-    protected $hidden = [
+    protected $hidden = [       //// tutaj podajemy te pola w momencie którym obiekt będzie zwracał swój stan swoje wartości
         'password',
         'remember_token',
     ];
