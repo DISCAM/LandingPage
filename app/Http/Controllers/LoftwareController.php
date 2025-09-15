@@ -21,4 +21,21 @@ class LoftwareController extends Controller
         ]);
     }
 
+    public function show($id){
+        $user = User::find($id);
+
+        return view('loftware.show', [
+            'lista'=>$user,
+            'title'=>'użytkownik o imieniu : ' . $user->name
+        ]);
+
+    }
+
+
+
+
+
+
+
+
 }

@@ -3,4 +3,5 @@
 use App\Http\Controllers\LoftwareController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [loftwareController::class, 'index']);
+Route::get('/', [LoftwareController::class, 'index']);
+Route::get('/{id}', [LoftwareController::class, 'show']);

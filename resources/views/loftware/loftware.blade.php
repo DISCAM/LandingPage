@@ -27,7 +27,7 @@
                 <tr>
                    <!-- <th scope="row">{{$loop->iteration}}</th> -->
                     <td>{{$asset->id }}</td>
-                    <td>{{$asset->name }}</td>
+                    <td><a href="{{URL::to('/' . $asset->id)}}"> {{$asset->name}} </a></td>
                     <td>{{$asset->email }}</td>
                     <td>{{$asset->phone }}</td>
                     <td>{{$asset->address }}</td>
