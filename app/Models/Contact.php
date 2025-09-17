@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Contact extends Model
 {
@@ -13,7 +14,7 @@ class Contact extends Model
         'company',
         'business_email',
         'phone_number',
-        'industry',
+        'industry_id',
         'company_size',
         'comments',
     ];
@@ -22,5 +23,9 @@ class Contact extends Model
         'created_updated'
     ];
 
+    public function industry() : BelongsTo
+    {
+        return $this->belongsTo(Industry::class, 'industry_id');
+    }
 
 }

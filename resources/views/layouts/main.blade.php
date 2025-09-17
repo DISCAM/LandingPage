@@ -117,9 +117,9 @@
                 <div class="col-12 col-md-6 col-lg-4">
                     <h6 class="text-uppercase opacity-75 mb-3">Labeling Products</h6>
                     <ul class="list-unstyled mega-list">
-                        <li><a href="#" class="mega-link">Loftware Cloud Enterprise</a><span class="mega-sub">For Global Enterprises</span>
+                        <li><a href=" {{ URL::to('/industry')  }} " class="mega-link">Industry</a><span class="mega-sub">For Global Enterprises</span>
                         </li>
-                        <li><a href="#" class="mega-link">Loftware Cloud</a><span class="mega-sub">For Medium & Growing Business</span>
+                        <li><a href="{{URL::to('/contacts')}}" class="mega-link">Contacts</a><span class="mega-sub">For Medium & Growing Business</span>
                         </li>
                         <li><a href="#" class="mega-link">Loftware Cloud Designer</a><span class="mega-sub">For Single Site, Smaller Business</span>
                         </li>

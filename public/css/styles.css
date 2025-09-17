@@ -1,14 +1,9 @@
+footer{
+    background-color: #eee;
+    padding: 10px 0px;
+    margin-top: 50px;
+}
 
-.mega-offcanvas{
-    height: 70vh;                 /* wys. panelu */
-    background:#0b2c6b;           /* granat zbliżony do screena */
-}
-.mega-list li + li{ margin-top:.5rem; }
-.mega-link{
-    color:#fff; text-decoration:none; font-weight:600;
-}
-.mega-link:hover{ text-decoration:underline; }
-.mega-sub{ display:block; font-weight:400; opacity:.8; font-size:.9rem; }
-.navbar-custom {
-    background-color: #0e1d77; /* Twój kolor */
+nav{
+    margin-bottom:50px;
 }

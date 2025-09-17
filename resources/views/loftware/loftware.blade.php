@@ -34,8 +34,12 @@
                     <td>{{$asset->status }}</td>
                 </tr>
             @endforeach
+
             </tbody>
         </table>
+        @foreach($stat as $stats)
+            <p>Status: {{ $stats->status }} – Liczba: {{ $stats->user_count }}</p>
+        @endforeach
     </div>
 
 @endsection
