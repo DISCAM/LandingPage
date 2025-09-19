@@ -200,7 +200,9 @@
         </div>
     </div>
 </div>
-
+<div class="container mt-3">
+    @include('partials.flash')
+</div>
 
 @yield('content')
 

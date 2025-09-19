@@ -21,6 +21,7 @@
                 <th scope="col">Branża</th>
                 <th scope="col">Wielkość firmy</th>
                 <th scope="col">Dodatkowe informacje</th>
+                <th scope="col">Operacje</th>
 
             </tr>
             </thead>
@@ -38,6 +39,15 @@
                     <td>{{$asset->industry->industry_name}} ({{$asset->industry->description}})</td>
                     <td>{{$asset->company_size}}</td>
                     <td>{{$asset->comments}}</td>
+                    <td> <a href="{{URL::to('/contacts/delete/' . $asset->id)}}"
+                            class="btn btn-danger btn-sm" onclick="return confirm('czy aby na pewno')">
+                            Delete
+                        </a><br><br>
+                        <a href="{{URL::to('/contacts/edit/' . $asset->id)}}"
+                           class="btn btn-danger btn-sm" >
+                            Edycja
+                        </a>
+                    </td>
                 </tr>
             @endforeach
             </tbody>
