@@ -10,9 +10,10 @@
 
     <div class="container mt-4">
         <h2> educja kontaktu  </h2>
-        <form action="{{ route('contacts.editStore') }}" method="post" role="form">
+        <form action="{{ route('contacts.update', $contact) }}" method="POST" >
             @csrf
-            <input type="hidden" name="id" value="{{ $contact->id }}">
+            @method('PATCH')
+
             <div class="form-group">
                 <label for="name">Imię</label>
                 <input type="text" class="form-control"  name="first_name" id="name"
@@ -29,8 +30,8 @@
                        value="{{ old('company', $contact->company) }}"">
             </div>
             <div class="form-group">
-                <label for="business_mail">Email</label>
-                <input type="text" class="form-control" name="business_mail" id="business_mail" required
+                <label for="business_email">Email</label>
+                <input type="text" class="form-control" name="business_email" id="business_email" required
                        value="{{ old('business_email', $contact->business_email) }}">
             </div>
             <div class="form-group">

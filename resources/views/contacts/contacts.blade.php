@@ -39,14 +39,39 @@
                     <td>{{$asset->industry->industry_name}} ({{$asset->industry->description}})</td>
                     <td>{{$asset->company_size}}</td>
                     <td>{{$asset->comments}}</td>
-                    <td> <a href="{{URL::to('/contacts/delete/' . $asset->id)}}"
+                    <td>
+
+                      <!--  <a href="{{URL::to('/contacts/delete/' . $asset->id)}}"
                             class="btn btn-danger btn-sm" onclick="return confirm('czy aby na pewno')">
                             Delete
-                        </a><br><br>
+                        </a>
+
+                        <br><br>
+
+
                         <a href="{{URL::to('/contacts/edit/' . $asset->id)}}"
                            class="btn btn-danger btn-sm" >
                             Edycja
                         </a>
+                        -->
+
+                        {{-- Formularz usuwania --}}
+                        <form action="{{ route('contacts.destroy', $asset) }}"
+                              method="POST"
+                              style="display:inline-block;"
+                              onsubmit="return confirm('Czy na pewno chcesz usunąć ten kontakt?')">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger btn-sm">
+                                Usuń
+                            </button>
+                        </form>
+
+                        {{-- Link do edycji --}}
+                        <a href="{{ route('contacts.edit', $asset) }}" class="btn btn-primary btn-sm">
+                            Edytuj
+                        </a>
+
                     </td>
                 </tr>
             @endforeach

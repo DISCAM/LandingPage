@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 use function Laravel\Prompts\password;
 use App\Repositories\UserRepository;
@@ -11,6 +14,8 @@ class LoftwareController extends Controller
 {
     public function index(UserRepository $userRepo)
     {
+        Gate::authorize('viewAny', User::class);
+
         $statistics = $userRepo->getUserStatistics();
 
         //$users = User::all();
@@ -27,7 +32,12 @@ class LoftwareController extends Controller
     }
 
     public function show(UserRepository $userRepo,$id){
+
+
+
         $user = $userRepo->find($id);
+
+        Gate::authorize('view', $user);
 
         return view('loftware.show', [
             'lista'=>$user,
@@ -37,12 +47,13 @@ class LoftwareController extends Controller
     public function create(UserRepository $userRepo)
     {
         $table = [
-            'name'=>'Boguś',
-            'email' => 'bogdan@wp.pl',
+            'name'=>'CIO',
+            'email' => 'cio@cio.pl',
             'password' => 'haslo',
             'phone'=>'2342423423',
-            'address' => 'podegrodzie',
-            'status' => 'Active'
+            'address' => 'wawa',
+            'status' => 'Active',
+            'role' => 'admin'
         ];
         $userRepo->create($table);
         return redirect('/');

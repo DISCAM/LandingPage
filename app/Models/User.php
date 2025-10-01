@@ -19,6 +19,7 @@ use Illuminate\Notifications\Notifiable;
  * @property string $phone
  * @property string $address
  * @property string $status
+ * @property string $role
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection<int, \Illuminate\Notifications\DatabaseNotification> $notifications
  * @property-read int|null $notifications_count
  * @method static \Database\Factories\UserFactory factory($count = null, $state = [])
@@ -54,7 +55,8 @@ class User extends Authenticatable
         'password',
         'phone',
         'address',
-        'status'
+        'status',
+        'role'
     ];
 
     /**

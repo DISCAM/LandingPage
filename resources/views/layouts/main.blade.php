@@ -9,8 +9,8 @@
     </title>
     <link rel="stylesheet" href="{{ URL::asset('css/styles.css') }}">
     <link rel="icon" href="favicon.png">
-    <link rel="stylesheet" href="/css/bootstrap.css"/>
-    <script src="/js/bootstrap.bundle.js"></script>
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
+    <script src="{{ asset('js/bootstrap.bundle.js') }}"></script>
 
 </head>
 <body>
@@ -75,33 +75,68 @@
         <div class="collapse navbar-collapse" id="topNav">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
 
-                <!-- TRIGGER: PRODUCTS -->
-                <li class="nav-item me-lg-2">
-                    <button class="btn btn-link nav-link px-2 text-white fw-bold" data-bs-toggle="offcanvas"
-                            data-bs-target="#megaProducts">
-                        Products
-                    </button>
-                </li>
 
-                <!-- TRIGGER: INDUSTRIES (drugi panel, ten sam wzór) -->
-                <li class="nav-item me-lg-2">
-                    <button class="btn btn-link nav-link px-2 text-white fw-bold"
-                            data-bs-toggle="offcanvas" data-bs-target="#megaIndustries">
-                        Industries
-                    </button>
-                </li>
 
-                <li class="nav-item"><a class="nav-link" href="#">Resources</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Partners</a></li>
 
-                <li class="nav-item ms-lg-3">
-                    <a href="{{ url('/internal-events/create') }}" class="btn btn-primary">Get in touch</a>
-                </li>
+                @guest
+                    <li class="nav-item ms-lg-3">
+                        <a class="btn btn-outline-light me-2" href="{{ route('login') }}">Zaloguj</a>
+                        <a class="btn btn-light text-primary" href="{{ route('register') }}">Rejestracja</a>
+                    </li>
+                @endguest
+
+                @auth
+                        <!-- TRIGGER: PRODUCTS -->
+                        <li class="nav-item me-lg-2">
+                            <button class="btn btn-link nav-link px-2 text-white fw-bold" data-bs-toggle="offcanvas"
+                                    data-bs-target="#megaProducts">
+                                Products
+                            </button>
+                        </li>
+
+                        <!-- TRIGGER: INDUSTRIES (drugi panel, ten sam wzór) -->
+                        <li class="nav-item me-lg-2">
+                            <button class="btn btn-link nav-link px-2 text-white fw-bold"
+                                    data-bs-toggle="offcanvas" data-bs-target="#megaIndustries">
+                                Industries
+                            </button>
+                        </li>
+
+                        <li class="nav-item"><a class="nav-link" href="#">Resources</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Partners</a></li>
+
+                        <li class="nav-item ms-lg-3">
+                            <a href="{{ url('/internal-events/create') }}" class="btn btn-primary">Get in touch</a>
+                        </li>
+
+
+
+                        <li class="nav-item dropdown ms-lg-3">
+                        <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span class="me-2">{{ Auth::user()->name }}</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li>
+                                <a class="dropdown-item" href="{{ route('profile.edit') }}">Profil</a>
+                            </li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li>
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+                                    <button class="dropdown-item" type="submit">Wyloguj</button>
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
+                @endauth
+
+
             </ul>
         </div>
     </div>
 </nav>
 
+@auth
 <!-- OFFCANVAS: PRODUCTS -->
 <div class="offcanvas offcanvas-top mega-offcanvas text-white" tabindex="-1" id="megaProducts"
      aria-labelledby="megaProductsLabel">
@@ -200,12 +235,17 @@
         </div>
     </div>
 </div>
+
+@endauth
+
+
 <div class="container mt-3">
     @include('partials.flash')
+
 </div>
 
 @yield('content')
 
-<script src="/laravel/resources/js/bootstrap.min.js"></script>
+
 </body>
 </html>

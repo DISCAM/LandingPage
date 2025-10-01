@@ -19,6 +19,7 @@
                 <th scope="col">Phone</th>
                 <th scope="col">Address</th>
                 <th scope="col">Status</th>
+                <th scope="col">Role</th>
             </tr>
             </thead>
             <tbody>
@@ -27,11 +28,12 @@
                 <tr>
                    <!-- <th scope="row">{{$loop->iteration}}</th> -->
                     <td>{{$asset->id }}</td>
-                    <td><a href="{{URL::to('/' . $asset->id)}}"> {{$asset->name}} </a></td>
+                    <td><a href="{{URL::to('loftware/' . $asset->id)}}"> {{$asset->name}} </a></td>
                     <td>{{$asset->email }}</td>
                     <td>{{$asset->phone }}</td>
                     <td>{{$asset->address }}</td>
                     <td>{{$asset->status }}</td>
+                    <td>{{$asset->role }}</td>
                 </tr>
             @endforeach
 
